@@ -19,8 +19,8 @@ public class LibraryReader {
         System.out.println("Nombre del libro: ");
         String autor = scanner.nextLine();
 
-        System.out.println("Autores: ");
-        String Autores = scanner.nextLine();
+        System.out.println("Libros: ");
+        String Libros = scanner.nextLine();
 
         System.out.println("Cuántos libros hay en la biblioteca?: ");
         int size = scanner.nextInt();
@@ -31,6 +31,6 @@ public class LibraryReader {
             books[i] = bookReader.read();
         }
 
-        return new Library(autor, )
+        return new Library(autor, books);
     }
 }

@@ -23,7 +23,7 @@ public class Library {
 
     public boolean hasAutor(String NIF){
         for (var book : books) {
-            if (book.getIsbn().equals(NIF)) {
+            if (book.hasAutor(NIF)) {
                 return true;
             }
         }
@@ -45,9 +45,20 @@ public class Library {
     public int countYearBooks(int year){
         int count = 0;
         for (Book libro : books) {
-            count++;
+            if (libro.getYear()==year) {
+                count++;
+            }
         }
         return count;
+    }
+
+    public Book findBook(String isbn) {
+        for (Book libro : books) {
+            if (libro.getIsbn().equals(isbn)) {
+                return libro;
+            }
+        }
+        return null;
     }
 
     public String getName() {

@@ -4,28 +4,66 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Library {
-    private String Nombre;
-    private Book[] libros;
+    private String name;
+    private Book[] books;
 
     public Library(String nombre, Book[] libros) {
-        Nombre = nombre;
-        this.libros = libros;
+        name = nombre;
+        this.books = libros;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public boolean hasBook(String ISBN) {
+        for (var book : books) {
+            if (book.getIsbn().equals(ISBN)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void setNombre(String nombre) {
-        Nombre = nombre;
+    public boolean hasAutor(String NIF){
+        for (var book : books) {
+            if (book.getIsbn().equals(NIF)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public Book[] getLibros() {
-        return libros;
+    //countBooks(autorNIF)
+    public int countBooks(String autorNIF){
+        int count = 0;
+        for (Book libro : books) {
+            if (libro.hasAutor(autorNIF)) {
+                count++;
+            }
+        }
+        return count;
     }
 
-    public void setLibros(Book[] libros) {
-        this.libros = libros;
+    //countYearBooks(year): dado un año, devuelve el número de libros de ese año.
+    public int countYearBooks(int year){
+        int count = 0;
+        for (Book libro : books) {
+            count++;
+        }
+        return count;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Book[] getBooks() {
+        return books;
+    }
+
+    public void setBooks(Book[] books) {
+        this.books = books;
     }
 
     @Override
@@ -33,19 +71,19 @@ public class Library {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Library library = (Library) o;
-        return Objects.equals(Nombre, library.Nombre) && Objects.deepEquals(libros, library.libros);
+        return Objects.equals(name, library.name) && Objects.deepEquals(books, library.books);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Nombre, Arrays.hashCode(libros));
+        return Objects.hash(name, Arrays.hashCode(books));
     }
 
     @Override
     public String toString() {
         return "Library{" +
-                "Nombre='" + Nombre + '\'' +
-                ", libros=" + Arrays.toString(libros) +
+                "Nombre='" + name + '\'' +
+                ", libros=" + Arrays.toString(books) +
                 '}';
     }
 }

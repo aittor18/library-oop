@@ -1,6 +1,6 @@
 package org.ies.library.components;
 
-import org.ies.library.model.Autor;
+import org.ies.library.model.Author;
 
 import java.util.Scanner;
 
@@ -11,10 +11,10 @@ public class AutorReader {
         this.scanner = scanner;
     }
 
-    public Autor read() {
+    public Author read() {
         System.out.println("Introduce los datos...");
         System.out.println("NIF: ");
-        int NIF = scanner.nextInt();
+        String NIF = scanner.nextLine();
         scanner.nextLine();
 
         System.out.println("Nombre: ");
@@ -24,7 +24,7 @@ public class AutorReader {
         String surname = scanner.nextLine();
 
 
-        return new Autor(
+        return new Author(
             NIF,
             name,
             surname
